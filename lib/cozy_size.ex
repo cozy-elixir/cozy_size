@@ -1,18 +1,16 @@
 defmodule CozySize do
   @moduledoc """
-  Documentation for `CozySize`.
-  """
+  Provides utilities for unit prefixes of size.
 
-  @doc """
-  Hello world.
+  Read more at:
 
-  ## Examples
-
-      iex> CozySize.hello()
-      :world
+    * https://en.wikipedia.org/wiki/Binary_prefix
 
   """
-  def hello do
-    :world
-  end
+
+  @type bits :: number()
+  @type bytes :: number()
+
+  @type from_opt :: {:as, :bits | :bytes} | {:precision, integer()}
+  @type from_opts :: [from_opt()]
 end
