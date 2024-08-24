@@ -4,9 +4,9 @@ defmodule CozySize do
 
   Currently, there're three existing standards for prefixing units of sizes:
 
-    * SI
-    * IEC
-    * JEDEC
+    * SI (decimal-based)
+    * IEC (binary-based)
+    * JEDEC (binary-based)
 
   > Read more about them at <https://en.wikipedia.org/wiki/Binary_prefix>.
 
@@ -23,12 +23,12 @@ defmodule CozySize do
       iex> # get a humanized tuple by following IEC standard
       iex> CozySize.IEC.from_bytes(bytes)
       {1, :GiB}
+      iex> # get a humanized tuple by following SI standard
+      iex> CozySize.SI.from_bytes(bytes)
+      {1.07, :GB}
       iex> # get a humanized tuple by following JEDEC standard
       iex> CozySize.JEDEC.from_bytes(bytes)
       {1, :GB}
-      iex> # get a humanized tuple by following JEDEC standard
-      iex> CozySize.SI.from_bytes(bytes)
-      {1.07, :GB}
 
   If you want to operate on bits, please check the `*_bits` functions in each
   module, which will not be further elaborated here.

@@ -54,6 +54,9 @@ defmodule CozySize.IEC do
 
   ## Examples
 
+      iex> CozySize.IEC.to_bits({0, :b})
+      0
+
       iex> CozySize.IEC.to_bits({1, :b})
       1
 
@@ -62,6 +65,9 @@ defmodule CozySize.IEC do
 
       iex> CozySize.IEC.to_bits({1.1, :Kib})
       1126.4
+
+      iex> CozySize.IEC.to_bits({0, :B})
+      0
 
       iex> CozySize.IEC.to_bits({1, :B})
       8
@@ -88,6 +94,9 @@ defmodule CozySize.IEC do
 
   ## Examples
 
+      iex> CozySize.IEC.to_bytes({0, :b})
+      0
+
       iex> CozySize.IEC.to_bytes({1, :b})
       0.125
 
@@ -96,6 +105,9 @@ defmodule CozySize.IEC do
 
       iex> CozySize.IEC.to_bytes({1.1, :Kib})
       140.8
+
+      iex> CozySize.IEC.to_bytes({0, :B})
+      0
 
       iex> CozySize.IEC.to_bytes({1, :B})
       1
@@ -122,6 +134,9 @@ defmodule CozySize.IEC do
 
   ## Examples
 
+      iex> CozySize.IEC.from_bits(0, as: :bits)
+      {0, :b}
+
       iex> CozySize.IEC.from_bits(8, as: :bits)
       {8, :b}
 
@@ -136,6 +151,9 @@ defmodule CozySize.IEC do
 
       iex> CozySize.IEC.from_bits(1024 * 10 ** 11, as: :bits, precision: 4)
       {93.1323, :Tib}
+
+      iex> CozySize.IEC.from_bits(0, as: :bytes)
+      {0, :B}
 
       iex> CozySize.IEC.from_bits(8, as: :bytes)
       {1, :B}
@@ -180,6 +198,9 @@ defmodule CozySize.IEC do
 
   ## Examples
 
+      iex> CozySize.IEC.from_bytes(0, as: :bits)
+      {0, :b}
+
       iex> CozySize.IEC.from_bytes(8, as: :bits)
       {64, :b}
 
@@ -194,6 +215,9 @@ defmodule CozySize.IEC do
 
       iex> CozySize.IEC.from_bytes(1024 * 10 ** 11, as: :bits, precision: 4)
       {745.0581, :Tib}
+
+      iex> CozySize.IEC.from_bytes(0, as: :bytes)
+      {0, :B}
 
       iex> CozySize.IEC.from_bytes(8, as: :bytes)
       {8, :B}
