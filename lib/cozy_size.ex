@@ -17,11 +17,28 @@ defmodule CozySize do
     * `CozySize.IEC`
     * `CozySize.JEDEC`
 
+  ## Usage
+
+      iex> # get bytes by following IEC standard
+      iex> bytes = CozySize.IEC.to_bytes({1024, :MiB})
+      iex> # get a humanized tuple by following IEC standard
+      iex> CozySize.IEC.from_bytes(bytes)
+      {1, :GiB}
+      iex> # get a humanized tuple by following JEDEC standard
+      iex> CozySize.JEDEC.from_bytes(bytes)
+      {1, :GB}
+      iex> # get a humanized tuple by following JEDEC standard
+      iex> CozySize.SI.from_bytes(bytes)
+      {1.07, :GB}
+
+  If you want to operate on bits, please check the `*_bits` functions in each module,
+  which will not be further elaborated here.
+
   """
 
   @type bits :: number()
   @type bytes :: number()
 
-  @type from_opt :: {:as, :bits | :bytes} | {:precision, integer()}
+  @type from_opt :: {:as, :bits | :bytes} | {:precision, pos_integer()}
   @type from_opts :: [from_opt()]
 end
