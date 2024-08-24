@@ -10,7 +10,6 @@ defmodule CozySize.Helper do
   @doc false
   def exponent(0, _base), do: 0
   def exponent(+0.0, _base), do: 0
-  def exponent(-0.0, _base), do: 0
 
   def exponent(n, base) do
     (:math.log(abs(n)) / :math.log(base))
