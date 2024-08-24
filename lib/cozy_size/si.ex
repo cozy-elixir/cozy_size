@@ -122,35 +122,35 @@ defmodule CozySize.SI do
 
   ## Examples
 
-     iex> CozySize.SI.from_bits(8, as: :bits)
-     {8, :b}
+      iex> CozySize.SI.from_bits(8, as: :bits)
+      {8, :b}
 
-     iex> CozySize.SI.from_bits(8192, as: :bits)
-     {8.19, :kb}
+      iex> CozySize.SI.from_bits(8192, as: :bits)
+      {8.19, :kb}
 
-     iex> CozySize.SI.from_bits(2 ** 120, as: :bits)
-     {1329228, :Qb}
+      iex> CozySize.SI.from_bits(2 ** 120, as: :bits)
+      {1329228, :Qb}
 
-     iex> CozySize.SI.from_bits(1024 * 10 ** 11, as: :bits)
-     {102.4, :Tb}
+      iex> CozySize.SI.from_bits(1024 * 10 ** 11, as: :bits)
+      {102.4, :Tb}
 
-     iex> CozySize.SI.from_bits(1024 * 10 ** 11, as: :bits, precision: 4)
-     {102.4, :Tb}
+      iex> CozySize.SI.from_bits(1024 * 10 ** 11, as: :bits, precision: 4)
+      {102.4, :Tb}
 
-     iex> CozySize.SI.from_bits(8, as: :bytes)
-     {1, :B}
+      iex> CozySize.SI.from_bits(8, as: :bytes)
+      {1, :B}
 
-     iex> CozySize.SI.from_bits(8192, as: :bytes)
-     {1.02, :kB}
+      iex> CozySize.SI.from_bits(8192, as: :bytes)
+      {1.02, :kB}
 
-     iex> CozySize.SI.from_bits(2 ** 120, as: :bytes)
-     {166153.5, :QB}
+      iex> CozySize.SI.from_bits(2 ** 120, as: :bytes)
+      {166153.5, :QB}
 
-     iex> CozySize.SI.from_bits(1024 * 10 ** 11, as: :bytes)
-     {12.8, :TB}
+      iex> CozySize.SI.from_bits(1024 * 10 ** 11, as: :bytes)
+      {12.8, :TB}
 
-     iex> CozySize.SI.from_bits(1024 * 10 ** 11, as: :bytes, precision: 4)
-     {12.8, :TB}
+      iex> CozySize.SI.from_bits(1024 * 10 ** 11, as: :bytes, precision: 4)
+      {12.8, :TB}
 
   """
   @spec from_bits(CozySize.bits(), CozySize.from_opts()) :: {number(), unit()}
@@ -180,35 +180,35 @@ defmodule CozySize.SI do
 
   ## Examples
 
-     iex> CozySize.SI.from_bytes(8, as: :bits)
-     {64, :b}
+      iex> CozySize.SI.from_bytes(8, as: :bits)
+      {64, :b}
 
-     iex> CozySize.SI.from_bytes(8192, as: :bits)
-     {65.54, :kb}
+      iex> CozySize.SI.from_bytes(8192, as: :bits)
+      {65.54, :kb}
 
-     iex> CozySize.SI.from_bytes(2 ** 120, as: :bits)
-     {10633823.97, :Qb}
+      iex> CozySize.SI.from_bytes(2 ** 120, as: :bits)
+      {10633823.97, :Qb}
 
-     iex> CozySize.SI.from_bytes(1024 * 10 ** 11, as: :bits)
-     {819.2, :Tb}
+      iex> CozySize.SI.from_bytes(1024 * 10 ** 11, as: :bits)
+      {819.2, :Tb}
 
-     iex> CozySize.SI.from_bytes(1024 * 10 ** 11, as: :bits, precision: 4)
-     {819.2, :Tb}
+      iex> CozySize.SI.from_bytes(1024 * 10 ** 11, as: :bits, precision: 4)
+      {819.2, :Tb}
 
-     iex> CozySize.SI.from_bytes(8, as: :bytes)
-     {8, :B}
+      iex> CozySize.SI.from_bytes(8, as: :bytes)
+      {8, :B}
 
-     iex> CozySize.SI.from_bytes(8192, as: :bytes)
-     {8.19, :kB}
+      iex> CozySize.SI.from_bytes(8192, as: :bytes)
+      {8.19, :kB}
 
-     iex> CozySize.SI.from_bytes(2 ** 120, as: :bytes)
-     {1329228, :QB}
+      iex> CozySize.SI.from_bytes(2 ** 120, as: :bytes)
+      {1329228, :QB}
 
-     iex> CozySize.SI.from_bytes(1024 * 10 ** 11, as: :bytes)
-     {102.4, :TB}
+      iex> CozySize.SI.from_bytes(1024 * 10 ** 11, as: :bytes)
+      {102.4, :TB}
 
-     iex> CozySize.SI.from_bytes(1024 * 10 ** 11, as: :bytes, precision: 4)
-     {102.4, :TB}
+      iex> CozySize.SI.from_bytes(1024 * 10 ** 11, as: :bytes, precision: 4)
+      {102.4, :TB}
 
   """
   @spec from_bytes(CozySize.bytes(), CozySize.from_opts()) :: {number(), unit()}
