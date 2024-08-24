@@ -2,8 +2,7 @@ defmodule CozySize do
   @moduledoc """
   Provides utilities for sizes.
 
-  Currently, there're three existing standards for prefixing
-  units of sizes:
+  Currently, there're three existing standards for prefixing units of sizes:
 
     * SI
     * IEC
@@ -31,8 +30,14 @@ defmodule CozySize do
       iex> CozySize.SI.from_bytes(bytes)
       {1.07, :GB}
 
-  If you want to operate on bits, please check the `*_bits` functions in each module,
-  which will not be further elaborated here.
+  If you want to operate on bits, please check the `*_bits` functions in each
+  module, which will not be further elaborated here.
+
+  ## Note
+
+  I know there are many repetitive parts in the code, but I don't plan to
+  abstract them. The abstracted code might not be as easy to understand,
+  so I intend to leave them as they are.
 
   """
 
