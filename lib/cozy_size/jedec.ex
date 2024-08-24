@@ -49,6 +49,30 @@ defmodule CozySize.JEDEC do
             )
           )
 
+  @doc """
+  Converts a `{n, unit}` tuple to a number of bits.
+
+  ## Examples
+
+      iex> CozySize.JEDEC.to_bits({1, :b})
+      1
+
+      iex> CozySize.JEDEC.to_bits({1, :Kb})
+      1024
+
+      iex> CozySize.JEDEC.to_bits({1.1, :Kb})
+      1126.4
+
+      iex> CozySize.JEDEC.to_bits({1, :B})
+      8
+
+      iex> CozySize.JEDEC.to_bits({1, :KB})
+      8192
+
+      iex> CozySize.JEDEC.to_bits({1.1, :KB})
+      9011.2
+
+  """
   @spec to_bits({number(), unit()}) :: CozySize.bits()
   def to_bits({n, unit} = _tuple) when is_number(n) and unit in @units do
     ratio =
@@ -56,9 +80,33 @@ defmodule CozySize.JEDEC do
       |> Map.fetch!(unit)
       |> Map.fetch!(:to_bits)
 
-    n * ratio
+    maybe_to_integer(n * ratio)
   end
 
+  @doc """
+  Converts a `{n, unit}` tuple to a number of bytes.
+
+  ## Examples
+
+      iex> CozySize.JEDEC.to_bytes({1, :b})
+      0.125
+
+      iex> CozySize.JEDEC.to_bytes({1, :Kb})
+      128
+
+      iex> CozySize.JEDEC.to_bytes({1.1, :Kb})
+      140.8
+
+      iex> CozySize.JEDEC.to_bytes({1, :B})
+      1
+
+      iex> CozySize.JEDEC.to_bytes({1, :KB})
+      1024
+
+      iex> CozySize.JEDEC.to_bytes({1.1, :KB})
+      1126.4
+
+  """
   @spec to_bytes({number(), unit()}) :: CozySize.bits()
   def to_bytes({n, unit} = _tuple) when is_number(n) and unit in @units do
     ratio =
@@ -66,9 +114,45 @@ defmodule CozySize.JEDEC do
       |> Map.fetch!(unit)
       |> Map.fetch!(:to_bytes)
 
-    n * ratio
+    maybe_to_integer(n * ratio)
   end
 
+  @doc """
+  Converts a number of bits to a `{n, unit}` tuple.
+
+  ## Examples
+
+      iex> CozySize.JEDEC.from_bits(8, as: :bits)
+      {8, :b}
+
+      iex> CozySize.JEDEC.from_bits(8192, as: :bits)
+      {8, :Kb}
+
+      iex> CozySize.JEDEC.from_bits(2 ** 100, as: :bits)
+      {1152921504606846976, :Tb}
+
+      iex> CozySize.JEDEC.from_bits(1024 * 10 ** 11, as: :bits)
+      {93.13, :Tb}
+
+      iex> CozySize.JEDEC.from_bits(1024 * 10 ** 11, as: :bits, precision: 4)
+      {93.1323, :Tb}
+
+      iex> CozySize.JEDEC.from_bits(8, as: :bytes)
+      {1, :B}
+
+      iex> CozySize.JEDEC.from_bits(8192, as: :bytes)
+      {1, :KB}
+
+      iex> CozySize.JEDEC.from_bits(2 ** 100, as: :bytes)
+      {144115188075855872, :TB}
+
+      iex> CozySize.JEDEC.from_bits(1024 * 10 ** 11, as: :bytes)
+      {11.64, :TB}
+
+      iex> CozySize.JEDEC.from_bits(1024 * 10 ** 11, as: :bytes, precision: 4)
+      {11.6415, :TB}
+
+  """
   @spec from_bits(CozySize.bits(), CozySize.from_opts()) :: {number(), unit()}
   def from_bits(n, opts \\ []) when is_number(n) do
     as = Keyword.get(opts, :as, :bytes)
@@ -91,6 +175,42 @@ defmodule CozySize.JEDEC do
     {n, unit}
   end
 
+  @doc """
+  Converts a number of bytes to a `{n, unit}` tuple.
+
+  ## Examples
+
+      iex> CozySize.JEDEC.from_bytes(8, as: :bits)
+      {64, :b}
+
+      iex> CozySize.JEDEC.from_bytes(8192, as: :bits)
+      {64, :Kb}
+
+      iex> CozySize.JEDEC.from_bytes(2 ** 100, as: :bits)
+      {9223372036854775808, :Tb}
+
+      iex> CozySize.JEDEC.from_bytes(1024 * 10 ** 11, as: :bits)
+      {745.06, :Tb}
+
+      iex> CozySize.JEDEC.from_bytes(1024 * 10 ** 11, as: :bits, precision: 4)
+      {745.0581, :Tb}
+
+      iex> CozySize.JEDEC.from_bytes(8, as: :bytes)
+      {8, :B}
+
+      iex> CozySize.JEDEC.from_bytes(8192, as: :bytes)
+      {8, :KB}
+
+      iex> CozySize.JEDEC.from_bytes(2 ** 100, as: :bytes)
+      {1152921504606846976, :TB}
+
+      iex> CozySize.JEDEC.from_bytes(1024 * 10 ** 11, as: :bytes)
+      {93.13, :TB}
+
+      iex> CozySize.JEDEC.from_bytes(1024 * 10 ** 11, as: :bytes, precision: 4)
+      {93.1323, :TB}
+
+  """
   @spec from_bytes(CozySize.bytes(), CozySize.from_opts()) :: {number(), unit()}
   def from_bytes(n, opts \\ []) when is_number(n) do
     as = Keyword.get(opts, :as, :bytes)
