@@ -2,9 +2,20 @@ defmodule CozySize do
   @moduledoc """
   Provides utilities for sizes.
 
-  Read more at:
+  Currently, there're three existing standards for prefixing
+  units of sizes:
 
-    * https://en.wikipedia.org/wiki/Binary_prefix
+    * SI
+    * IEC
+    * JEDEC
+
+  > Read more about them at <https://en.wikipedia.org/wiki/Binary_prefix>.
+
+  `CozySize` provides support for them via:
+
+    * `CozySize.SI`
+    * `CozySize.IEC`
+    * `CozySize.JEDEC`
 
   """
 

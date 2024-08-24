@@ -50,7 +50,7 @@ defmodule CozySize.IEC do
           )
 
   @spec to_bits({number(), unit()}) :: CozySize.bits()
-  def to_bits({n, unit}) when is_number(n) and unit in @units do
+  def to_bits({n, unit} = _tuple) when is_number(n) and unit in @units do
     ratio =
       @map_units
       |> Map.fetch!(unit)
@@ -60,7 +60,7 @@ defmodule CozySize.IEC do
   end
 
   @spec to_bytes({number(), unit()}) :: CozySize.bits()
-  def to_bytes({n, unit}) when is_number(n) and unit in @units do
+  def to_bytes({n, unit} = _tuple) when is_number(n) and unit in @units do
     ratio =
       @map_units
       |> Map.fetch!(unit)
