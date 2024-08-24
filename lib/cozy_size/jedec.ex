@@ -1,6 +1,6 @@
 defmodule CozySize.JEDEC do
   @moduledoc """
-  Provides utilities for the JEDEC-prefixed units.
+  Provides utilities for sizes using JEDEC-prefixed units.
   """
 
   import CozySize.Helper, only: [exponent: 2, maybe_to_integer: 1]

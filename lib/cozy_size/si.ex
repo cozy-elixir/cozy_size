@@ -1,6 +1,6 @@
 defmodule CozySize.SI do
   @moduledoc """
-  Provides utilities for the SI-prefixed units.
+  Provides utilities for sizes using SI-prefixed units.
   """
 
   import CozySize.Helper, only: [exponent: 2, maybe_to_integer: 1]

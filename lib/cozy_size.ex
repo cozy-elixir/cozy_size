@@ -1,6 +1,6 @@
 defmodule CozySize do
   @moduledoc """
-  Provides utilities for unit prefixes of size.
+  Provides utilities for sizes.
 
   Read more at:
 

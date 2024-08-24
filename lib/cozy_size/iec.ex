@@ -1,6 +1,6 @@
 defmodule CozySize.IEC do
   @moduledoc """
-  Provides utilities for the IEC-prefixed units.
+  Provides utilities for sizes using IEC-prefixed units.
   """
 
   import CozySize.Helper, only: [exponent: 2, maybe_to_integer: 1]
