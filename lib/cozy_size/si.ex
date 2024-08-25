@@ -81,12 +81,12 @@ defmodule CozySize.SI do
   """
   @spec to_bits({number(), unit()}) :: CozySize.bits()
   def to_bits({n, unit} = _tuple) when is_number(n) and unit in @units do
-    ratio =
+    factor =
       @map_units
       |> Map.fetch!(unit)
       |> Map.fetch!(:to_bits)
 
-    maybe_to_integer(n * ratio)
+    maybe_to_integer(n * factor)
   end
 
   @doc """
@@ -121,12 +121,12 @@ defmodule CozySize.SI do
   """
   @spec to_bytes({number(), unit()}) :: CozySize.bits()
   def to_bytes({n, unit} = _tuple) when is_number(n) and unit in @units do
-    ratio =
+    factor =
       @map_units
       |> Map.fetch!(unit)
       |> Map.fetch!(:to_bytes)
 
-    maybe_to_integer(n * ratio)
+    maybe_to_integer(n * factor)
   end
 
   @doc """
